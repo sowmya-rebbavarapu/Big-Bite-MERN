@@ -36,4 +36,3 @@ app.get("/",(req,res)=>{
 app.listen(port,()=>{
     console.log(`server started on http://localhost:${port}`)
 })
-//mongodb+srv://sowmyaweb:<db_password>@cluster0.id9uk.mongodb.net/?
