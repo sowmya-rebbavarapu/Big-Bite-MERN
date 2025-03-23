@@ -1,5 +1,5 @@
 
-# Big-Bite Full Stack Delivery Website 
+# Big-Bite Full Stack Food  Delivery Website 
 
 This is a **full-stack  application** built using **React.js, Node.js, Express, and MongoDB**. The project includes:  
 - **Frontend** (User Panel)  
