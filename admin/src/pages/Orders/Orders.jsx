@@ -52,10 +52,11 @@ const Orders = ({ url }) => {
       const missingItems = new Set();
       orders.forEach(order => {
         order.items.forEach(item => {
-          const itemId = Object.keys(item)[0];
-          if (!itemDetails[itemId]) {
-            missingItems.add(itemId);
-          }
+          Object.keys(item).forEach(itemId => {
+            if (!itemDetails[itemId]) {
+              missingItems.add(itemId);
+            }
+          });
         });
       });
 
@@ -91,16 +92,14 @@ const Orders = ({ url }) => {
             <img src={assets.parcel_icon} alt="Parcel Icon" />
             <div>
               <p className='order-item-food'>
-                {order.items.map((item, idx) => {
-                  const itemId = Object.keys(item)[0];
-                  const quantity = item[itemId];
-                  return (
+                {order.items.flatMap(item =>
+                  Object.entries(item).map(([itemId, quantity], idx) => (
                     <span key={idx}>
                       {itemDetails[itemId] || "Loading..."} x {quantity}
-                      {idx !== order.items.length - 1 && ", "}
+                      {idx !== Object.entries(item).length - 1 && ", "}
                     </span>
-                  );
-                })}
+                  ))
+                )}
               </p>
               <p className="order-item-name">
                 {order.address.firstName} {order.address.lastName}
