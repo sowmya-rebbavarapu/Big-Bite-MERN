@@ -1,5 +1,17 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
- export const connectDB=async()=>{
-     await mongoose.connect('mongodb+srv://sowmyarebbavarapu:sowmya12@cluster0.id9uk.mongodb.net/foodapp').then(()=>console.log("DB Connected"));
-}
+// dotenv.config();
+
+export const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("DB Connected");
+  } catch (error) {
+    console.error("DB Connection Error:", error);
+    process.exit(1); // Exit the process with failure
+  }
+};

@@ -5,7 +5,9 @@ import foodRouter from "./routes/foodRoute.js"
 import userRouter from "./routes/userRoute.js"
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter  from "./routes/orderRoute.js"
-import 'dotenv/config'
+import dotenv from "dotenv";
+
+dotenv.config()
 
 //app config
 const app=express()
@@ -36,4 +38,3 @@ app.get("/",(req,res)=>{
 app.listen(port,()=>{
     console.log(`server started on http://localhost:${port}`)
 })
-//mongodb+srv://sowmyaweb:<db_password>@cluster0.id9uk.mongodb.net/?
